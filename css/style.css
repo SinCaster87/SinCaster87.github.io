@@ -1,0 +1,51 @@
+
+
+body {
+  
+  background-image: url("assets/background.png");
+
+  background-color: black;
+  color: white;
+  /*text-align:center;*/
+  margin: 0px;
+} 
+
+.decision{
+	font-size: 30px;
+  font-family: 'Quicksand', sans-serif;
+  text-align:center;
+  color: white;
+}
+
+.choices{
+
+}
+
+.text{
+	font-size: 30px;
+  font-family: 'Quicksand', sans-serif;
+  text-align:center;
+  color: white;
+}
+
+.paper-container{
+  text-decoration-color: black;
+}
+#paper{
+	height: 200vh;
+	width: 100%;
+	min-height: 100%;
+}
+.container{
+position: absolute;
+  padding: 50px 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+}
+
+
+
+
