@@ -11,7 +11,7 @@ story["choices"]["open"]["text"]
 const story = {text: "You learn of a pandemic growing out into other countries",
 				choices:{
 					close:{
-						text: "close boreders to prevent infected from coming into country",
+						text: "close borders to prevent infected \n from coming  into country",
 						choices:{
 							safe:{
 								text: "Virus infects nobody for a while and citizens request open borders",
@@ -23,10 +23,10 @@ const story = {text: "You learn of a pandemic growing out into other countries",
 												text:"People start to get infected by returning travelers and concerns start to rise",
 												choices:{
 													harshcontrol:{
-														text:"Figure out where the virus is and demand martial law in infected area and back contact track everyone confirmed infected. Harsh control over it.",
+														text:"Figure out where the virus is and demand martial law in infected area \n and back contact track everyone confirmed infected. Harsh control over it.",
 														choices:{
 															noinfect:{
-																text:"No new infections across country occur and virus is contained until those who have it die or fight it off. Very minor damage done to country.",
+																text:"No new infections across country occur and virus is contained \n until those who have it die or fight it off. Very minor damage done to country.",
 																choices:{
 
 																}
@@ -35,7 +35,7 @@ const story = {text: "You learn of a pandemic growing out into other countries",
 														}
 													},
 													nocontrol:{
-														text: "Find out where virus is and contract trace everyone infected but do not put harsh restrictions on the area. People are allowed to move around freely.",
+														text: "Find out where virus is and contract trace everyone infected but do not put \n harsh restrictions on the area. People are allowed to move around freely.",
 														choices:{
 															outcontrol:{
 																text: "New infections occur across country and spiral situation out of control",
@@ -44,7 +44,7 @@ const story = {text: "You learn of a pandemic growing out into other countries",
 																		text: "Allow people to still move around freely",
 																			choices:{
 																				heavydeath:{
-																					text: "Disease kills millions but eventually passes through country. With loss of millions, lots of jobs have been left unfilled and country will take years to repair collateral damage in letting the virus rage.",
+																					text: "Disease kills millions but eventually passes through country. \n With loss of millions, lots of jobs have been left unfilled and country will \n take years to repair collateral damage in letting the virus rage.",
 																							}
 
 																						}
@@ -53,7 +53,7 @@ const story = {text: "You learn of a pandemic growing out into other countries",
 																						text: "Order martial law and lock down everything and everyone",
 																						choices:{
 																							noinfect:{
-																								text: "No new infections across country occur and virus is contained until those who have it die or fight it off. State of country is damaged but not too signifigantly.",
+																								text: "No new infections across country occur and virus is contained \n until those who have it die or fight it off. \nState of country is damaged but not too signifigantly.",
 																							}
 
 																						}
@@ -73,7 +73,7 @@ const story = {text: "You learn of a pandemic growing out into other countries",
 										text: "Keep them closed until pandemic has been under control for rest of the world.",
 										choices:{
 											noinfect:{
-												text: "Problem solved. Minimal infections and virus has been contained long enough for cure/vaccine. No damage done to country",
+												text: "Problem solved. Minimal infections and virus has been contained \n long enough for cure/vaccine. No damage done to country",
 												choices:{
 
 												}
@@ -98,13 +98,13 @@ const story = {text: "You learn of a pandemic growing out into other countries",
 						text: "open borders and not be aware of whats happening with infections",
 						choices:{
 							massiveinfect:{
-								text: "Massive counts of infections occur, spreading around the entire country at uncontrollable rates.",
+								text: "Massive counts of infections occur, \n spreading around the entire country at uncontrollable rates.",
 								choices:{
 									nocontrol:{
 										text: "Allow people to still move around freely",
 										choices:{
 											heavydeath:{
-												text: "Disease kills millions but eventually passes through country. With loss of millions, lots of jobs have been left unfilled and country will take years to repair collateral damage in letting the virus rage.",
+												text: "Disease kills millions but eventually passes through country. \n With loss of millions, lots of jobs have been left unfilled and country will take years \n to repair collateral damage in letting the virus rage.",
 											}
 
 										}
@@ -113,7 +113,7 @@ const story = {text: "You learn of a pandemic growing out into other countries",
 										text: "Order martial law and lock down everything and everyone",
 										choices:{
 											noinfect:{
-												text: "No new infections across country occur and virus is contained until those who have it die or fight it off. State of country is damaged but not too signifigantly.",
+												text: "No new infections across country occur and virus is \n contained until those who have it die or fight it off. \n State of country is damaged but not too signifigantly.",
 											}
 
 										}
@@ -175,8 +175,8 @@ function clear(){
 function initTree(storyObject, graph) {
 
 	var rect = new joint.shapes.standard.Rectangle();
-	rect.position(775, 50);
-	rect.resize(375, 40);
+	rect.position(1500, 50);
+	rect.resize(500, 50);
 	rect.attr({
 		label: {
 			text: storyObject["text"],
@@ -197,8 +197,8 @@ function drawAndConnectChildren(parent,storyObject,graph){
 				style: ""
 			}});
 			console.log(currentChoice);
-		currentChoice.position(currentChoice.attributes.position.x-100+offset,currentChoice.attributes.position.y +200);
-		offset+=400;
+		currentChoice.position(currentChoice.attributes.position.x-200+offset,currentChoice.attributes.position.y +100);
+		offset+=700;
 		currentChoice["story"] = storyObject["choices"][choice];
 
 
@@ -226,41 +226,45 @@ function drawAndConnectChildren(parent,storyObject,graph){
 
 
 $( document ).ready(function() {
-	$(document).on("change", "input[name='choice']", function () {
+$(document).on("change", "input[name='choice']", function () {
 
-		if(this.checked){
-			console.log("click");
-			var choice = $(this).attr("value");
-			currentStory = currentStory["choices"][choice];
-			clear();
-			renderStory(currentStory);
-		}});
-	console.log( "ready!" );
-	currentStory = story;
+if(this.checked){
+console.log("click");
+var choice = $(this).attr("value");
+currentStory = currentStory["choices"][choice];
+clear();
+renderStory(currentStory);
+}});
+    console.log( "ready!" );
+    currentStory = story;
 
-	var graph = new joint.dia.Graph;
+		var graph = new joint.dia.Graph;
 
-	var paper = new joint.dia.Paper({
-		el: document.getElementById('paper'),
-		model: graph,
-		width: document.getElementById('paper').width,
-		height:document.getElementById('paper').height,
-		gridSize: 1,
-		interactive: false,
-		background: {
-			color: '0000ffff'
-		}
-	});
-	paper.on('cell:pointerdown',
-		function(cellView, evt, x, y) {
-			if(cellView.model.story.choices != null && cellView.model.story.choices != {}){
-				drawAndConnectChildren(cellView.model,cellView.model.story,cellView.model.graph);
-			}else {
-				console.log("No more story");
-			}
-		}
+    var paper = new joint.dia.Paper({
+            el: document.getElementById('paper'),
+            model: graph,
+            width: document.getElementById('paper').width,
+            height:document.getElementById('paper').height,
+            gridSize: 1,
+						interactive: false,
+						background: {
+       color: '#FFFFFF'
+    				}
+    });
+		paper.on('cell:pointerdown',
+		    function(cellView, evt, x, y) {
+						if(cellView.model.story.choices != null && cellView.model.story.choices != {}){ 
+							//code that runs when you click any node that is not the bottom
+		        drawAndConnectChildren(cellView.model,cellView.model.story,cellView.model.graph);
+		        cellView.model.attr('body/fill','lightgreen');
+					}else {
+						//code that runs when you click a bottom node
+						console.log("No more story");
+						cellView.model.attr('body/fill','lightblue');
+					}
+		    }
 		);
 
-	initTree(currentStory,graph);
+		initTree(currentStory,graph);
     //renderStory(currentStory);
 });
