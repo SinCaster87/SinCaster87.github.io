@@ -1,0 +1,29 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+
+}
+
+
+.container{
+    height:100vh;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url(assets/gradient.png);
+        
+}
+
+#two{
+    background-color: beige;
+}
+
+.inner{
+    padding:50px;
+    font-size: 2em;
+}
