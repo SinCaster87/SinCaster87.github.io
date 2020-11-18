@@ -31,9 +31,13 @@ body{
 	padding:50px;
 	font-size: 2em;
 	color: white;
+	font-family: Quicksand;
 }
 
 .title{
 	color: white;
 }
 
+.video {
+  position: center;
+}
