@@ -32,11 +32,21 @@ body{
 	font-size: 2em;
 	color: white;
 	font-family: 'Space Mono', monospace;
+	/*margin-bottom: 50px;*/
 }
 
 .title{
 	color: white;
 	font-family: 'Space Mono', monospace;
+	margin-top: 45px;
+
+}
+
+.titleprime{
+	color: white;
+	font-family: 'Space Mono', monospace;
+	font-weight: bold;
+	margin-top: 50px;
 
 }
 
